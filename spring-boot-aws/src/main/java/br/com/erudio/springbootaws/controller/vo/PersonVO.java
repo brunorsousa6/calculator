@@ -2,10 +2,12 @@ package br.com.erudio.springbootaws.controller.vo;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dozermapper.core.Mapping;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 
@@ -13,21 +15,17 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PersonVO implements Serializable {
+public class PersonVO extends RepresentationModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private Long id;
 
-    @JsonProperty("first_name")
+    @Mapping("id")
+    @JsonProperty("id")
+    private Long key;
+
     private String firstName;
-
-    @JsonProperty("last_name")
     private String lastName;
-
-    @JsonProperty("address")
     private String address;
-
-    @JsonProperty("gender")
     private String gender;
 
 }
